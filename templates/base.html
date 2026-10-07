@@ -1,0 +1,32 @@
+{% load static %}
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#0b536d">
+  <title>{% block title %}مياه مأرب — بوابة الخدمات{% endblock %}</title>
+  <link rel="icon" href="{% static 'brand/institution-logo.png' %}" type="image/png"><link rel="manifest" href="{% static 'manifest.webmanifest' %}">
+  <link rel="stylesheet" href="/static/css/app.css"><link rel="stylesheet" href="/static/css/identity.css">
+  <script defer src="/static/js/outbox.js"></script><script defer src="/static/js/app.js"></script><script defer src="/static/js/complaints.js"></script><script defer src="/static/js/registers.js"></script><script defer src="/static/js/violations.js"></script><script defer src="/static/js/work-results.js"></script>
+</head>
+<body class="institution-app {% if user.is_employee and request.resolver_match.url_name != 'home' and request.resolver_match.url_name != 'login' %}employee-layout{% endif %} {% block page_class %}{% endblock %}" {% if is_shell %}data-shell="true"{% endif %}>
+  <a class="skip-link" href="#main">الانتقال إلى المحتوى</a>
+  {% if is_shell or user.is_employee and request.resolver_match.url_name != 'home' and request.resolver_match.url_name != 'login' %}{% include 'components/sidebar.html' %}{% endif %}
+  <div class="site-body">
+    <div class="institution-strip"><span>المؤسسة العامة للمياه والصرف الصحي</span><span>فرع مأرب</span></div>
+    {% if committee_demo %}<div class="committee-banner"><span>تجربة اللجنة · بيانات خيالية على هذا الكمبيوتر</span><a href="{% url 'committee_guide' %}">دليل التجربة وتبديل الدور</a></div>{% endif %}
+    <header class="site-header">
+      <a class="brand" href="{% url 'home' %}"><img class="institution-logo" src="/static/brand/institution-logo.png" width="50" height="44" alt="شعار المؤسسة العامة للمياه والصرف الصحي — مأرب"><span>مياه مأرب<small>البلاغات والعمل الميداني</small></span></a>
+      <nav class="top-nav" aria-label="القائمة الرئيسية">
+      {% if user.is_authenticated %}
+        {% if not user.is_employee %}<a href="{% url 'workspace' %}" {% if request.resolver_match.url_name == 'workspace' %}aria-current="page"{% endif %}>تقديم بلاغ</a><a href="{% url 'complaint_register' %}" {% if request.resolver_match.url_name == 'complaint_register' or request.resolver_match.url_name == 'complaint_detail' %}aria-current="page"{% endif %}>بلاغاتي</a><a href="{% url 'password_change' %}">أمان الحساب</a><form method="post" action="{% url 'logout' %}" data-logout>{% csrf_token %}<button class="link-button">خروج</button></form>{% else %}<span class="top-role">{% include 'components/icon.html' with name='shield' %}{{ user.get_role_display }}</span>{% endif %}
+      {% else %}<a href="{% url 'login' %}">تسجيل الدخول</a><a class="header-account" href="{% url 'register' %}">حساب المستفيدين {% include 'components/icon.html' with name='arrow' %}</a>{% endif %}
+      </nav>
+    </header>
+    <div class="connection-bar"><span class="connection-indicator" id="connection-status" role="status">جارٍ التحقق من الاتصال…</span><span class="environment-label">نسخة تجريبية</span></div>
+    <main id="main" class="container {% block main_class %}{% endblock %}">
+      {% for message in messages %}<div class="notice success" role="status">{% include 'components/icon.html' with name='check' %}{{ message }}</div>{% endfor %}
+      {% block content %}{% endblock %}
+    </main>
+    <footer class="site-footer"><span>مياه مأرب <span class="footer-divider">/</span> البوابة الإلكترونية</span><span>بلاغات المستفيدين والعمل الداخلي</span></footer>
+  </div>
+</body></html>

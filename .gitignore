@@ -1,0 +1,12 @@
+.venv/
+.local/
+.env
+.committee.env
+__pycache__/
+*.py[cod]
+.pytest_cache/
+staticfiles/
+media/
+test-results/
+committee/backups-*/
+*.sqlite3

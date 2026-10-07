@@ -1,0 +1,14 @@
+# Windows uses the same pinned application dependencies. Gunicorn is Linux-only;
+# Waitress replaces its serving role without altering application behavior.
+Django==5.2.17
+asgiref==3.12.1
+sqlparse==0.6.0
+psycopg[binary]==3.3.6
+psycopg-binary==3.3.6
+typing-extensions==4.16.0
+whitenoise==6.12.0
+Pillow==12.3.0
+packaging==25.0
+waitress==3.0.2
+# Windows has no system IANA timezone database; pin Django's Windows dependency.
+tzdata==2026.5

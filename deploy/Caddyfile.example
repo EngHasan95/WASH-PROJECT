@@ -1,0 +1,6 @@
+# Replace the institution's hostname after DNS is configured.
+water.example.org {
+    encode zstd gzip
+    reverse_proxy 127.0.0.1:8080
+}
+# Caddy handles HTTPS certificates. Never add a public file_server for media.

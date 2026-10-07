@@ -1,0 +1,4 @@
+{% extends 'base.html' %}
+{% block title %}مساحة العمل — مياه مأرب{% endblock %}
+{% block content %}<div data-intake-shell>{% if is_shell or not user.is_employee %}{% include 'components/complaint_workspace.html' %}{% endif %}
+{% if is_shell or not user.is_employee %}<details class="legacy-drafts" data-legacy-drafts><summary>المسودات الأولية السابقة</summary>{% endif %}{% include 'components/draft_workspace.html' %}{% if is_shell or not user.is_employee %}</details>{% endif %}</div>{% include 'components/local_register.html' %}<div data-violation-shell hidden>{% include 'components/violation_form.html' %}</div><p data-violation-denied class="notice" hidden>هذه النافذة مخصصة لحساب الفني المُجهز على هذا الجهاز. سجّل الدخول بالحساب المناسب عند توفر الإنترنت.</p><div data-task-shell hidden>{% include 'components/work_result_form.html' %}</div>{% endblock %}

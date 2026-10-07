@@ -1,0 +1,4 @@
+{% extends 'base.html' %}
+{% block title %}مساحة حسابي — مياه مأرب{% endblock %}
+{% block content %}{% if is_shell or not user.is_employee %}{% include 'components/complaint_workspace.html' %}{% endif %}
+{% if is_shell or not user.is_employee %}<details class="legacy-drafts" data-legacy-drafts><summary>المسودات الأولية السابقة</summary>{% endif %}{% include 'components/draft_workspace.html' %}{% if is_shell or not user.is_employee %}</details>{% endif %}{% endblock %}

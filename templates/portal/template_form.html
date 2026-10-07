@@ -1,0 +1,12 @@
+{% extends 'base.html' %}{% load static %}
+{% block title %}محرر نماذج التقارير{% endblock %}
+{% block content %}<script src="{% static 'js/template_editor.js' %}" defer></script>
+<a class="back-link" href="{% url 'report_template_library' %}">← مكتبة النماذج</a>
+<div class="page-heading"><div><span class="section-label">{% if version %}تعديل الإصدار {{ version.number }} / حفظ إصدار جديد{% else %}نموذج جديد{% endif %}</span><h1>محرر النموذج</h1><p>اكتب النص ورتب البيانات. اضغط اسم الحقل لإدخاله في موضع الكتابة؛ يملؤه النظام عند إنشاء التقرير.</p></div></div>
+<div class="template-editor-layout"><section class="detail-panel"><form method="post" enctype="multipart/form-data" class="workflow-form" id="template-editor">{% csrf_token %}{{ form.client_id }}{{ form.expected_revision }}{{ form.non_field_errors }}
+{% for field in form.visible_fields %}<label for="{{ field.id_for_label }}">{{ field.label }}</label>{{ field }}{% if field.help_text %}<small class="muted">{{ field.help_text }}</small>{% endif %}{{ field.errors }}{% endfor %}
+<div class="workflow-actions"><button type="submit" name="action" value="preview" formtarget="_blank" class="secondary-button">معاينة قبل الحفظ</button><button type="submit" name="action" value="save" class="primary-button">حفظ النموذج للمراجعة</button></div></form></section>
+<aside class="detail-panel template-field-palette"><span class="section-label">بيانات جاهزة للإدراج</span><h2>حقول النموذج</h2><p class="muted">حدد مكان الحقل في النص ثم اضغط اسمه. يمكنك أيضًا كتابة اسم الحقل في جدول البيانات.</p>
+{% for source, fields in field_groups %}<div data-template-source="{{ source }}" hidden>{% for label, token in fields %}<button type="button" class="template-token" data-template-token="{{ token }}">{{ label }}</button>{% endfor %}</div>{% endfor %}
+<h3>حقولك الإضافية</h3><div id="custom-field-tokens"></div><p class="muted">أضف أسماء جديدة في «حقول إضافية» لتظهر هنا وفي نموذج إنشاء التقرير.</p></aside></div>
+{% endblock %}

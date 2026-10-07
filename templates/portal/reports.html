@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block title %}متابعة العمل — مياه مأرب{% endblock %}
+{% block content %}
+<div class="page-heading"><div><span class="section-label">الشؤون الفنية / المتابعة</span><h1>متابعة العمل</h1><p>أعداد السجلات الحالية كما هي في النظام، دون تقدير مدد أو أداء لم تُعتمد معاييره.</p></div></div>
+<section class="detail-panel"><form method="get">{% include 'portal/report_scope_fields.html' %}<button class="primary-button" type="submit">تطبيق نطاق التقرير</button> <a class="secondary-button" href="{% url 'director_report' %}">جميع السجلات</a></form></section>
+{% if scope_snapshot %}<a class="secondary-button" href="{% url 'report_template_choose' 'summary' 0 %}{% if scope_query %}?{{ scope_query }}{% endif %}">التقارير الإدارية بنماذج معتمدة</a><p class="muted">النطاق المطبق: {% for label, value in scope_snapshot.labels %}{{ label }}: {{ value }}{% if not forloop.last %} · {% endif %}{% endfor %}</p>{% endif %}
+<div class="report-grid"><section class="detail-panel"><span class="section-label">01 / البلاغات</span><h2>{{ total }} بلاغ مستلم</h2><dl class="report-values">{% for label, count in statuses %}<div><dt>{{ label }}</dt><dd>{{ count }}</dd></div>{% endfor %}</dl></section>
+<section class="detail-panel"><span class="section-label">02 / الأقسام</span><h2>توزيع البلاغات</h2><dl class="report-values">{% for label, count in departments %}<div><dt>{{ label }}</dt><dd>{{ count }}</dd></div>{% endfor %}</dl></section>
+<section class="detail-panel"><span class="section-label">03 / المخالفات</span><h2>{{ violation_total }} ملف مخالفة</h2><dl class="report-values">{% for label, count in violation_statuses %}<div><dt>{{ label }}</dt><dd>{{ count }}</dd></div>{% endfor %}</dl></section>
+<section class="detail-panel"><span class="section-label">04 / الفنيون</span><h2>عدد البلاغات المسندة</h2><dl class="report-values">{% for technician in technicians %}<div><dt>{{ technician.display_name }}</dt><dd>{{ technician.assigned }}</dd></div>{% empty %}<div><dt>لا توجد حسابات فنيين نشطة</dt><dd>—</dd></div>{% endfor %}</dl></section></div>
+{% endblock %}

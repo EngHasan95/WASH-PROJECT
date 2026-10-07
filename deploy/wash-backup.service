@@ -1,0 +1,17 @@
+[Unit]
+Description=Consistent WASH database and media snapshot
+After=postgresql.service
+
+[Service]
+Type=oneshot
+User=wash
+Group=wash
+WorkingDirectory=/opt/wash
+EnvironmentFile=/etc/wash/environment
+ExecStart=/opt/wash/.venv/bin/python /opt/wash/scripts/backup.py /mnt/wash-backups
+UMask=0077
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/var/lib/wash /mnt/wash-backups

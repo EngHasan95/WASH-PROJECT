@@ -1,0 +1,8 @@
+{% extends 'base.html' %}
+{% block title %}إدارة حساب {{ employee.display_name }} — مياه مأرب{% endblock %}
+{% block content %}
+<a class="back-link" href="{% url 'employees' %}">← حسابات الموظفين</a>
+<div class="page-heading"><div><span class="section-label">الحسابات والصلاحيات</span><h1>{{ employee.display_name }}</h1><p dir="ltr">{{ employee.username }}</p></div><span class="status-pill">{% if employee.is_active %}فعال{% else %}موقوف{% endif %}</span></div>
+<div class="detail-layout"><section class="paper-panel account-form"><header class="panel-heading"><h2>تعديل الحساب</h2></header><form method="post">{% csrf_token %}{% include 'registration/form_fields.html' %}<button class="button full">حفظ التعديل</button></form><p class="panel-footnote">لا يمكن إيقاف موظف أو تغيير دوره قبل نقل بلاغاته القائمة. لا تُحذف إجراءات الموظف السابقة. إعادة تعيين كلمة المرور تلغي جلساته السابقة وتلزمه بتغيير الكلمة المؤقتة.</p></section>
+<section class="detail-panel"><span class="section-label">سجل التدقيق</span><h2>تاريخ إدارة الحساب</h2><ol class="workflow-events">{% for event in account_events %}<li><strong>{% if event.action == 'created' %}إنشاء الحساب{% else %}تعديل الحساب{% endif %}</strong><span>{{ event.created_at|date:'Y/m/d · H:i' }} · {{ event.actor.display_name }}</span>{% if event.note %}<p>{{ event.note|linebreaksbr }}</p>{% endif %}</li>{% empty %}<li>لا توجد إجراءات مسجلة.</li>{% endfor %}</ol></section></div>
+{% endblock %}

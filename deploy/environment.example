@@ -1,0 +1,10 @@
+# Private file /etc/wash/environment; permissions 0600, never commit actual values.
+DJANGO_DEBUG=0
+DJANGO_SECRET_KEY=REPLACE_WITH_A_RANDOM_SECRET_AT_LEAST_64_CHARACTERS
+DJANGO_ALLOWED_HOSTS=water.example.org
+DATABASE_URL=postgresql://wash:REPLACE_WITH_DATABASE_PASSWORD@127.0.0.1:5432/wash
+# Local same-host PostgreSQL may use disable; remote PostgreSQL must use verified TLS.
+PGSSLMODE=disable
+WASH_MEDIA_ROOT=/var/lib/wash/media
+WASH_WRITE_LOCK=/var/lib/wash/application-write.lock
+WASH_TRUST_PROXY=1

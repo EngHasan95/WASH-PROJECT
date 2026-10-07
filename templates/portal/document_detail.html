@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block title %}{{ document.title }} — {{ document.reference }}{% endblock %}
+{% block content %}
+<a class="back-link" href="{% url 'violation_detail' item.pk %}">← ملف المخالفة</a>
+<div class="page-heading"><div><span class="section-label">{{ document.reference }} / {{ document.get_kind_display }}</span><h1>{{ document.title }}</h1><p>{{ item.reference }} · {{ document.document_date|date:'Y/m/d' }}</p></div><span class="status-pill">{{ document.get_status_display }}</span></div>
+<section class="detail-panel"><dl class="detail-fields"><div><dt>رقم الصادر أو المحضر</dt><dd>{{ document.official_number|default:'لم يحدد بعد' }}</dd></div><div><dt>الجهة المخاطبة</dt><dd>{{ document.recipient|default:'—' }}</dd></div><div><dt>نسخة التحرير</dt><dd>{{ document.revision }}</dd></div>{% if document.issued_at %}<div><dt>الإصدار</dt><dd>{{ document.issued_at|date:'Y/m/d · H:i' }} · {{ document.snapshot.prepared_by }}</dd></div>{% endif %}</dl><div class="document-body">{{ document.body|linebreaksbr }}</div></section>
+<section class="detail-panel"><h2>مراجعة المستند</h2><p>{% if can_edit %}راجع النص ورقم الصادر والجهة المخاطبة. بعد الإصدار تحفظ النسخة ولا يقبل النظام تعديلها.{% else %}يمكن طباعة المستند لاستكمال الاعتماد الفعلي بالتوقيع والختم.{% endif %}</p>
+<a class="secondary-button" href="{% url 'violation_document_print' document.pk %}" target="_blank" rel="noopener">عرض نسخة الطباعة</a>
+{% if can_edit %}<a class="secondary-button" href="{% url 'violation_document_edit' document.pk %}">تحرير المسودة</a><form method="post" action="{% url 'violation_document_issue' document.pk %}" class="workflow-form">{% csrf_token %}<input type="hidden" name="revision" value="{{ document.revision }}">{% if issue_error %}<p class="feedback" role="alert">{{ issue_error }}</p>{% endif %}<button class="primary-button" type="submit">إصدار النسخة وحفظها</button></form>{% endif %}
+</section>{% endblock %}

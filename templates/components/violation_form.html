@@ -1,0 +1,14 @@
+<div class="page-heading"><div><span class="section-label">العمل الداخلي / الفنيون</span><h1>تسجيل مخالفة ميدانية</h1><p>يسجلها الفني عند اكتشاف ربط عشوائي أو اشتراك مخالف، ثم تصل إلى مسؤول النظام.</p></div></div>
+<section class="detail-panel"><form id="violation-form" class="violation-form">
+<div class="filter-grid"><div><label for="v-person">اسم المخالف</label><input id="v-person" name="person_name" maxlength="150" required></div>
+<div><label for="v-area">المنطقة</label><input id="v-area" name="area" maxlength="150" required></div>
+<div><label for="v-address">العنوان التفصيلي</label><input id="v-address" name="address" maxlength="500" required></div>
+<div><label for="v-kind">نوع المخالفة</label><select id="v-kind" name="kind" required><option value="">اختر النوع</option><option value="random_connection">ربط عشوائي</option><option value="illegal_subscription">اشتراك مخالف</option></select></div>
+<div><label for="v-activity">نوع النشاط</label><select id="v-activity" name="activity" required><option value="">اختر النشاط</option><option value="residential">منزلي</option><option value="commercial">تجاري</option><option value="government">حكومي</option></select></div>
+<div><label for="v-consumption">المياه المستهلكة تقديريًا (متر مكعب)</label><input id="v-consumption" name="estimated_cubic_meters" type="number" inputmode="decimal" min="0.01" max="9999999999" step="0.01" required></div>
+<div><label for="v-days">مدة التقدير (أيام)</label><input id="v-days" name="estimate_days" type="number" inputmode="numeric" min="1" max="3650" required></div></div>
+<label for="v-description">ملاحظات ميدانية (اختياري)</label><textarea id="v-description" name="description" maxlength="3000" rows="4"></textarea>
+<p class="detail-status-note">الكمية تقدير ميداني وليست غرامة أو قراءة مؤكدة. تُحفظ البيانات على هذا الجهاز حتى يصل إلى الإنترنت.</p>
+<button class="primary-button" type="submit" id="violation-save">حفظ المخالفة</button><p id="violation-feedback" role="status" class="feedback"></p>
+</form></section>
+<section class="detail-panel"><span class="section-label">على هذا الجهاز</span><h2>المخالفات المحفوظة</h2><div id="violation-local-list" class="draft-ledger"></div></section>

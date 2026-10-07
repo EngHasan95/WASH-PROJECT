@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block title %}{% if internal %}سجل البلاغات{% else %}بلاغاتي{% endif %} — مياه مأرب{% endblock %}
+{% block content %}
+<div class="page-heading"><div><span class="section-label">{% if internal %}العمل الداخلي / الاستقبال{% else %}بوابة المستفيدين / المتابعة{% endif %}</span><h1>{% if internal %}سجل البلاغات{% else %}بلاغاتي{% endif %}</h1><p>{% if internal %}البلاغات المستلمة في النظام · للاطلاع بواسطة المدير الفني{% else %}بلاغاتك المستلمة، وأرقامها وتفاصيلها في مكان واحد{% endif %}</p></div>{% if not internal %}<a class="primary-button" href="{% url 'workspace' %}">تسجيل بلاغ {% include 'components/icon.html' with name='arrow' %}</a>{% endif %}</div>
+<form method="get" class="register-filters" aria-label="البحث في البلاغات">
+  <div class="register-search"><label for="{{ filter_form.q.id_for_label }}">{{ filter_form.q.label }}</label>{{ filter_form.q }}{{ filter_form.q.errors }}</div>
+  <details class="register-filter-details" {% if request.GET.complaint_type or request.GET.neighborhood or request.GET.status or request.GET.date_from or request.GET.date_to or filter_form.errors %}open{% endif %}><summary>التصفية بالنوع والحي والحالة والتاريخ</summary><div class="filter-grid">{% for field in filter_form %}{% if field.name != 'q' %}<div><label for="{{ field.id_for_label }}">{{ field.label }}</label>{{ field }}{{ field.errors }}</div>{% endif %}{% endfor %}</div></details>
+  <div class="filter-actions"><button class="primary-button" type="submit">عرض النتائج</button><a class="quiet-button" href="{% url register_route %}">مسح التصفية</a><span>تاريخ الاستلام بتوقيت مأرب</span></div>
+</form>
+<section class="register-section" aria-labelledby="results-heading"><div class="register-summary"><h2 id="results-heading">{% if request.GET %}نتائج البحث{% else %}البلاغات المستلمة{% endif %}</h2><span class="document-tag">{{ page.paginator.count }} بلاغ</span></div>
+{% if filter_form.errors %}<p class="notice" role="alert">صحح خيارات البحث أعلاه لعرض البلاغات.</p>{% endif %}
+{% if page.object_list %}<div class="complaint-register-list">
+{% for item in page %}<article class="register-row">
+  <div class="register-number"><span class="receipt-reference" dir="ltr">{{ item.reference }}</span><time datetime="{{ item.received_at|date:'c' }}">{{ item.received_at|date:'Y/m/d · H:i' }}</time></div>
+  <div class="register-subject"><h3><a href="{% url detail_route item.pk %}">{{ item.other_type|default:item.get_complaint_type_display }}</a></h3><p>{{ item.other_neighborhood|default:item.get_neighborhood_display }}{% if internal %} · {{ item.reporter_name }}{% endif %}</p></div>
+  <div class="register-state"><span class="status-pill">{{ item.get_status_display }}</span><small>{{ item.photo_count }} صورة مرفقة</small></div>
+  <a class="record-open" aria-label="تفاصيل البلاغ {{ item.reference }}" href="{% url detail_route item.pk %}">{% include 'components/icon.html' with name='arrow' %}</a>
+</article>{% endfor %}</div>
+<nav class="pagination" aria-label="صفحات البلاغات">{% if page.has_previous %}<a class="quiet-button" href="?{{ filter_query }}&amp;page={{ page.previous_page_number }}">السابق</a>{% endif %}<span>صفحة {{ page.number }} من {{ page.paginator.num_pages }}</span>{% if page.has_next %}<a class="quiet-button" href="?{{ filter_query }}&amp;page={{ page.next_page_number }}">التالي</a>{% endif %}</nav>
+{% elif not filter_form.errors %}<div class="register-empty">{% include 'components/icon.html' with name='document' %}<h3>{% if request.GET %}لا توجد بلاغات تطابق البحث{% else %}لا توجد بلاغات مستلمة بعد{% endif %}</h3><p>{% if request.GET %}عدّل كلمات البحث أو امسح التصفية.{% elif not internal %}سجّل بلاغك من مساحتك. البلاغ المحفوظ على الجهاز يظهر هنا بعد وصوله للنظام.{% else %}تظهر البلاغات هنا فور استلامها من المستفيدين.{% endif %}</p></div>{% endif %}
+</section><p class="register-footnote">تتغير حالة البلاغ بعد تسجيل إجراءات القسم المختص. تظهر آخر حالة عند الاتصال بالنظام.</p>
+{% endblock %}

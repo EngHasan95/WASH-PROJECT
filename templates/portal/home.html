@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block page_class %}public-home{% endblock %}
+{% block content %}
+<section class="water-welcome" aria-labelledby="welcome-title">
+  <div class="welcome-copy">
+    <span class="welcome-label"><span></span>سجل مياه مأرب <bdi dir="ltr">/ 01</bdi></span>
+    <h1 id="welcome-title">أخبرنا أين<br><span>المشكلة.</span></h1>
+    <p>حدّد نوع البلاغ وحيّه، واكتب ما رأيت في موقعه. بعد وصوله إلى النظام تحصل على رقم مرجعي لمتابعة الاستلام.</p>
+    <div class="welcome-actions"><a class="button" href="{% if user.is_authenticated and not user.is_employee %}{% url 'workspace' %}{% else %}{% url 'login' %}{% endif %}">تقديم بلاغ {% include 'components/icon.html' with name='arrow' %}</a><a class="text-action" href="{% url 'register' %}">إنشاء حساب المستفيدين</a></div>
+    <div class="welcome-signature"><span class="signature-rule"></span>من موقع المشكلة إلى سجل البلاغات</div>
+  </div>
+  <figure class="water-art"><img src="/static/icons/flow.svg" width="600" height="460" alt="رسم تجريدي لخطوط الماء ومراحل تسجيل البلاغ"><figcaption>الملاحظة <span></span> التسجيل <span></span> إيصال الاستلام</figcaption></figure>
+</section>
+<section class="service-entry" aria-label="اختيار بوابة الدخول">
+  <div class="beneficiary-entry"><span class="entry-number">01</span><div class="entry-details"><span class="section-label">للمشتركين والمستفيدين</span><h2>بوابة المستفيدين</h2><p>سجّل بلاغك واحفظ بياناته وصوره.<br>وتحقق من وصوله للنظام برقم مرجعي خاص.</p><div class="entry-actions"><a class="button" href="{% url 'login' %}">الدخول إلى حسابي {% include 'components/icon.html' with name='arrow' %}</a><a class="text-action" href="{% url 'register' %}">إنشاء حساب المستفيدين</a></div></div><span class="entry-symbol">{% include 'components/icon.html' with name='user' %}</span></div>
+  <div class="employee-entry"><span class="entry-number">02</span><div class="entry-details"><span class="section-label">للعاملين في المؤسسة</span><h2>بوابة الموظفين</h2><p>مساحة داخلية بصلاحيات دورك.<br>استخدم حسابك الذي يجهزه المدير الفني.</p><a class="employee-entry-link" href="{% url 'login' %}">الدخول إلى مساحة العمل {% include 'components/icon.html' with name='arrow' %}</a></div><span class="entry-symbol">{% include 'components/icon.html' with name='briefcase' %}</span></div>
+</section>
+<div class="service-note"><span class="note-emblem">{% include 'components/icon.html' with name='save' %}</span><div><strong>ابدأ بلاغك، أينما كنت.</strong><p>بعد أول دخول بوجود الإنترنت، تحفظ البلاغات وصورها في صفحاتك المعتادة وتُرسل عند عودة الاتصال وفتح النظام.</p></div><span class="pilot-label">المتاح الآن: الحسابات وتسجيل البلاغ</span></div>
+{% endblock %}

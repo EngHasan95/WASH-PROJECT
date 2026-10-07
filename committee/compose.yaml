@@ -1,0 +1,48 @@
+name: wash-committee
+services:
+  database:
+    image: wash-committee-postgres:17
+    platform: linux/amd64
+    pull_policy: never
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: wash_committee
+      POSTGRES_USER: wash
+      POSTGRES_PASSWORD: ${WASH_COMMITTEE_DB_PASSWORD:?Run the committee launcher first}
+    volumes:
+      - committee-db:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U wash -d wash_committee"]
+      interval: 3s
+      timeout: 3s
+      retries: 30
+    networks: [committee]
+  app:
+    image: wash-committee:2026.10
+    platform: linux/amd64
+    pull_policy: never
+    restart: unless-stopped
+    depends_on:
+      database:
+        condition: service_healthy
+    environment:
+      DATABASE_URL: postgresql://wash:${WASH_COMMITTEE_DB_PASSWORD}@database:5432/wash_committee
+    ports:
+      - "127.0.0.1:${WASH_COMMITTEE_PORT:-8765}:8080"
+    volumes:
+      - committee-state:/committee
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request;urllib.request.urlopen('http://127.0.0.1:8080/health/',timeout=3)"]
+      interval: 3s
+      timeout: 4s
+      retries: 30
+      start_period: 15s
+    networks: [committee, desktop]
+networks:
+  committee:
+    internal: true
+  desktop:
+    driver: bridge
+volumes:
+  committee-db:
+  committee-state:

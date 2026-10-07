@@ -1,0 +1,22 @@
+[Unit]
+Description=WASH institutional application
+After=network.target postgresql.service
+
+[Service]
+Type=simple
+User=wash
+Group=wash
+WorkingDirectory=/opt/wash
+EnvironmentFile=/etc/wash/environment
+ExecStart=/bin/bash /opt/wash/scripts/start_production.sh
+Restart=on-failure
+RestartSec=5
+UMask=0077
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/var/lib/wash
+
+[Install]
+WantedBy=multi-user.target

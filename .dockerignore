@@ -1,0 +1,12 @@
+.git
+.venv
+.local/*
+!.local/committee-wheels
+!.local/committee-reference
+.env
+.committee.env
+media
+staticfiles
+test-results
+**/__pycache__
+**/*.pyc

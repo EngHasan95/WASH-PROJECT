@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 460" fill="none" role="img">
+  <defs>
+    <pattern id="grid" width="34" height="34" patternUnits="userSpaceOnUse"><path d="M34 0H0V34" stroke="#bad9d0" stroke-opacity=".52"/></pattern>
+    <linearGradient id="stream" x1="50" y1="80" x2="520" y2="380" gradientUnits="userSpaceOnUse"><stop stop-color="#317f9a"/><stop offset="1" stop-color="#0b536d"/></linearGradient>
+  </defs>
+  <rect x="14" y="12" width="572" height="436" fill="url(#grid)"/>
+  <path d="M20 365c94-30 111-132 193-158 91-29 128 68 209 32 60-27 75-104 162-113" stroke="#b8d3c7" stroke-width="2"/>
+  <path d="M21 397c100-21 131-117 206-142 92-31 122 72 213 35 55-22 92-93 144-93" stroke="#b8d3c7" stroke-width="2"/>
+  <path d="M36 116c102 37 153-33 236-15 74 17 79 75 156 68 64-6 101-63 153-45" stroke="#b8d3c7" stroke-width="2"/>
+  <path d="M10 342c91-15 126-144 205-170 93-31 126 58 199 25 64-29 94-118 178-95" stroke="url(#stream)" stroke-width="27" stroke-linecap="round"/>
+  <path d="M8 342c95-14 127-144 207-170 93-31 126 58 199 25 64-29 94-118 178-95" stroke="#8ad6cc" stroke-opacity=".85" stroke-width="3"/>
+  <path d="M73 46h64M105 46v24M462 398h74M500 382v34" stroke="#c5a86b" stroke-width="3"/>
+  <circle cx="82" cy="300" r="19" fill="#f8f7ed" stroke="#0b536d" stroke-width="5"/><circle cx="82" cy="300" r="5" fill="#c59d56"/>
+  <circle cx="304" cy="177" r="19" fill="#f8f7ed" stroke="#0b536d" stroke-width="5"/><circle cx="304" cy="177" r="5" fill="#c59d56"/>
+  <circle cx="509" cy="137" r="19" fill="#f8f7ed" stroke="#0b536d" stroke-width="5"/><circle cx="509" cy="137" r="5" fill="#c59d56"/>
+  <path d="M64 323v59h82M287 195v62h68M527 117V59h-69" stroke="#496f6d" stroke-width="2" stroke-dasharray="5 6"/>
+  <rect x="133" y="364" width="13" height="13" fill="#c59d56"/><rect x="348" y="250" width="13" height="13" fill="#c59d56"/><rect x="451" y="52" width="13" height="13" fill="#c59d56"/>
+  <path d="M151 74c8-6 17-6 25 0s17 6 25 0 17-6 25 0 17 6 25 0m175 294c8-6 17-6 25 0s17 6 25 0 17-6 25 0" stroke="#81b9b1" stroke-width="3" stroke-linecap="round"/>
+</svg>

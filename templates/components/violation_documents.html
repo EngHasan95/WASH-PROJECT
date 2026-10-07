@@ -1,0 +1,3 @@
+<section class="detail-panel"><span class="section-label">03 / ملف المراسلات</span><h2>المحاضر والمذكرات</h2>
+{% if can_create_document %}<a class="secondary-button" href="{% url 'violation_document_new' item.pk %}">تحرير محضر أو مذكرة</a>{% endif %}
+<ol class="workflow-events">{% for document in documents %}<li><a href="{% url 'violation_document' document.pk %}"><strong>{{ document.title }}</strong></a><span>{{ document.get_kind_display }} · {{ document.get_status_display }} · {{ document.document_date|date:'Y/m/d' }}</span>{% if document.official_number %}<p>رقم الصادر أو المحضر: {{ document.official_number }}</p>{% endif %}</li>{% empty %}<li class="muted">لم تُحرر مستندات داخل النظام لهذا الملف بعد.</li>{% endfor %}</ol></section>

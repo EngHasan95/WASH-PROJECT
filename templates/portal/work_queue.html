@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block title %}مهام البلاغات — مياه مأرب{% endblock %}
+{% block content %}
+<div class="page-heading"><div><span class="section-label">العمل الداخلي / المعالجة</span><h1>مهام البلاغات</h1><p>بلاغات القسم ومهامك وفق صلاحية حسابك.</p></div></div>
+<section class="register-section"><div class="register-summary"><h2>السجل الحالي</h2><span class="document-tag">{{ page.paginator.count }} بلاغ</span></div>
+{% if page.object_list %}<div class="complaint-register-list">{% for item in page %}<article class="register-row">
+  <div class="register-number"><span class="receipt-reference" dir="ltr">{{ item.reference }}</span><time datetime="{{ item.received_at|date:'c' }}">{{ item.received_at|date:'Y/m/d · H:i' }}</time></div>
+  <div class="register-subject"><h3><a href="{% url 'work_detail' item.pk %}">{{ item.other_type|default:item.get_complaint_type_display }}</a></h3><p>{{ item.get_department_display }} · {{ item.other_neighborhood|default:item.get_neighborhood_display }}{% if item.assignee %} · {{ item.assignee.display_name }}{% endif %}</p></div>
+  <div class="register-state"><span class="status-pill">{{ item.get_status_display }}</span></div>
+  <a class="record-open" href="{% url 'work_detail' item.pk %}" aria-label="فتح البلاغ {{ item.reference }}">←</a>
+</article>{% endfor %}</div><nav class="pagination" aria-label="صفحات المهام">{% if page.has_previous %}<a class="quiet-button" href="?page={{ page.previous_page_number }}">السابق</a>{% endif %}<span>صفحة {{ page.number }} من {{ page.paginator.num_pages }}</span>{% if page.has_next %}<a class="quiet-button" href="?page={{ page.next_page_number }}">التالي</a>{% endif %}</nav>{% else %}<p class="register-empty">لا توجد مهام ظاهرة لهذا الحساب حاليًا.</p>{% endif %}</section>
+{% endblock %}

@@ -1,0 +1,7 @@
+{% extends 'base.html' %}
+{% block title %}مكتبة نماذج التقارير{% endblock %}
+{% block content %}
+<div class="page-heading"><div><span class="section-label">وثائق المؤسسة / النماذج</span><h1>مكتبة النماذج</h1><p>أضف نموذجًا يناسب العمل، واضبط حقوله وشكله ثم عاينه واعتمده.</p></div>{% if can_edit %}<a class="primary-button" href="{% url 'report_template_new' %}">إضافة نموذج جديد</a>{% endif %}</div>
+<div class="template-catalog">{% for root in page %}<article class="detail-panel template-card"><span class="section-label">{{ root.get_source_display }}</span><h2><a href="{% url 'report_template_detail' root.pk %}">{{ root.latest_name }}</a></h2><p>{% if not root.enabled %}موقوف للتقارير الجديدة{% elif root.active_version %}الإصدار المعتمد: {{ root.active_version.number }}{% else %}مسودة تنتظر الاعتماد{% endif %}</p>{% if root.active_version and root.revision > root.active_version.number %}<p class="muted">يوجد إصدار أحدث للمراجعة</p>{% endif %}<a class="secondary-button" href="{% url 'report_template_preview' root.latest_version.pk %}" target="_blank" rel="noopener">معاينة الشكل</a><a class="back-link" href="{% url 'report_template_detail' root.pk %}">الإصدارات والاعتماد</a></article>{% empty %}<section class="detail-panel"><h2>ابدأ بالنموذج الذي تحتاجه</h2><p>يمكن إعداد أي نص جديد وإضافة حقول خاصة به. بعد اعتماد المدير الفني يظهر النموذج ضمن تقارير الملف المناسب.</p></section>{% endfor %}</div>
+{% include 'components/pagination.html' %}
+{% endblock %}

@@ -1,0 +1,2 @@
+{% extends 'base.html' %}
+{% block content %}<section class="access-message"><span class="access-symbol">{% include 'components/icon.html' with name='shield' %}</span><span class="section-label">صلاحيات الحساب</span><h1>هذه الصفحة ليست ضمن صلاحياتك</h1><p>ارجع إلى مساحتك للوصول إلى الخدمات المتاحة لحسابك.</p><a class="button" href="{% url 'workspace' %}">العودة إلى مساحتي {% include 'components/icon.html' with name='arrow' %}</a></section>{% endblock %}

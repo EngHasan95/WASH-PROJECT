@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block title %}تحرير مستند — {{ item.reference }}{% endblock %}
+{% block content %}
+<a class="back-link" href="{% url 'violation_detail' item.pk %}">← ملف المخالفة</a>
+<div class="page-heading"><div><span class="section-label">السكرتارية / {{ item.reference }}</span><h1>{% if document %}تحرير المسودة{% else %}محضر أو مذكرة جديدة{% endif %}</h1><p>تُحفظ المسودة أولًا، ثم تراجعها وتصدر النسخة المعدة للتوقيع والختم.</p></div></div>
+<section class="detail-panel"><p>{{ item.person_name }} · {{ item.area }} · {{ item.get_activity_display }}</p>
+<form method="post" class="workflow-form">{% csrf_token %}{{ form.client_id }}{{ form.revision }}{{ form.non_field_errors }}
+{% for field in form.visible_fields %}<label for="{{ field.id_for_label }}">{{ field.label }}</label>{{ field }}{{ field.errors }}{% endfor %}
+<p class="muted">لا ينشئ النظام توقيعًا أو ختمًا. الاستهلاك الميداني تقديري؛ اعتماد الرسوم والسداد من صلاحية المالية.</p>
+<button class="primary-button" type="submit">حفظ المسودة</button></form></section>
+{% endblock %}

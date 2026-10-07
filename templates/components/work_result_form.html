@@ -1,0 +1,15 @@
+<section class="detail-panel" data-work-result-panel {% if is_shell %}hidden{% endif %}>
+  <span class="section-label">نتيجة التنفيذ</span><h2 data-work-result-title>إرسال النتيجة للمراجعة</h2>
+  <p data-work-result-task class="muted"></p>
+  <p class="muted">تُجهّز بطاقة المهمة لهذا الحساب على الجهاز. نحفظ النتيجة والصور محليًا أولًا ونرفعها عند الاتصال. الإغلاق النهائي للمدير الفني.</p>
+  <form data-work-result-form class="workflow-form">
+    <label for="work-result-note">نتيجة المعالجة (مطلوبة)</label>
+    <textarea id="work-result-note" name="note" rows="5" maxlength="3000" required></textarea>
+    <label for="work-result-photos">صور ما بعد التنفيذ — حتى 3 صور، 5 ميجابايت لكل صورة</label>
+    <input id="work-result-photos" name="photos" type="file" accept="image/jpeg,image/png,image/webp" multiple>
+    <button class="primary-button" type="submit" data-work-result-save disabled>إرسال النتيجة للمراجعة</button>
+    <button class="quiet-button" type="button" data-work-result-sync>محاولة إرسال المحفوظ</button>
+  </form>
+  <p data-work-result-feedback role="status"></p>
+  <div data-work-result-list></div>
+</section>

@@ -1,0 +1,184 @@
+/* سجل مياه مأرب: water-level lines, quiet paper, one institutional seal. */
+:root{
+  --ink:#173c46;--blue:#0b617d;--muted:#49636a;--line:#c9dcd7;
+  --paper:#fffefa;--canvas:#f3f7f3;--mint:#bce5d8;--coral:#d5805c;
+  --gold:#9b642b;--green:#14664d;--radius:4px;
+}
+body{background:var(--canvas);font-size:15px}
+.institution-strip{padding-block:5px;border-top-color:#c09e62;font-size:11px;background:#e4f0e9}
+.site-header{padding-block:13px;border-bottom:1px solid var(--line)}
+.brand{font-size:20px;gap:11px}.brand .institution-logo{width:48px;height:43px}.brand small{font-size:11px}
+.top-nav{gap:20px;font-size:13px}.top-nav>a,.top-nav .link-button{display:inline-flex;align-items:center;min-height:44px;padding-inline:5px}
+.top-nav a[aria-current]{color:var(--ink);border-bottom:2px solid #bb8e4f}
+.header-account{background:#e3f1ec;border-radius:3px;padding-inline:13px!important;font-weight:700}
+.top-role{background:#e4f1ed;color:var(--ink);border-radius:3px;font-size:12px}
+.connection-bar{padding-block:7px;background:#f9fbf8;font-size:12px}
+.connection-indicator{color:#32545b}.environment-label{font-size:11px}
+.container{max-width:1280px;padding-top:29px}
+.site-footer{max-width:1280px;font-size:12px;border-top:2px solid #b7cfc6}
+.section-label,.panel-kicker{font-size:12px;color:#12637c;letter-spacing:.01em}
+.page-heading{border-bottom:1px solid var(--line);padding-bottom:18px;margin-bottom:23px}
+.page-heading h1{font-size:29px;line-height:1.5}.page-heading p{font-size:13px}
+.document-tag{background:#e5f0ea;border-radius:3px;color:#215347;font-size:12px;margin-top:18px}
+.button,.primary-button{background:var(--blue);border-color:var(--blue);border-radius:3px;box-shadow:none;font-size:14px;min-height:48px}
+.button:hover,.primary-button:hover{background:#094f68;border-color:#094f68}
+.quiet-button{border-radius:3px;background:#eaf3ef;border-color:#c2d9cf;font-size:12px;min-height:44px}
+.text-action{font-size:13px}.link-button{font-size:13px;min-height:44px}
+.paper-panel,.detail-panel,.register-filters,.register-section{border-radius:3px;box-shadow:none}
+.panel-heading{border-bottom:1px solid var(--line);padding:18px 22px}
+.panel-heading>.icon{background:transparent;color:var(--blue);border-radius:0;padding:6px;width:35px;height:35px}
+.panel-footnote,.feedback,.help{font-size:12px}
+label{font-size:13px}input,textarea,select{border-radius:3px;background:#fff;font-size:14px;border-color:#aebfba}
+input::placeholder,textarea::placeholder{font-size:13px;color:#61737a}
+.form-field{margin-bottom:19px}.notice{border-radius:3px}
+.count-label{border-radius:3px;background:#e1eee8;color:#165a4d}
+
+/* A public-service front page with one immediate action and an abstract water route. */
+.public-home{background:var(--canvas)}.public-home .container{padding-top:24px}
+.water-welcome{grid-template-columns:1.04fr .96fr;min-height:420px;background:#123c4b;border-radius:3px;border-top:5px solid #c8a46a}
+.welcome-copy{padding:42px clamp(28px,4vw,62px) 36px 28px}
+.welcome-label{color:#d6ece9;font-size:12px;gap:12px}
+.welcome-label>span{background:#cfae70;width:8px;height:8px}
+.welcome-label bdi{font:700 12px monospace;color:#a6d8d3}
+.welcome-copy h1{font-size:clamp(35px,4vw,57px);line-height:1.55;margin:18px 0 15px;letter-spacing:-.025em}
+.welcome-copy h1>span{color:#93e2d4}
+.welcome-copy p{max-width:450px;color:#e1f1eb;font-size:15px;line-height:2.1;margin:0 0 19px}
+.welcome-actions{display:flex;align-items:center;gap:20px;flex-wrap:wrap}
+.welcome-actions .button{background:#e9c681;border-color:#e9c681;color:#173c46;padding-inline:20px}
+.welcome-actions .button:hover{background:#f3d8a5;border-color:#f3d8a5}
+.welcome-actions .text-action{color:#fff;text-decoration-color:#b7e0d9}
+.welcome-signature{font-size:12px;color:#bcded7;font-weight:400;margin-top:26px}
+.signature-rule{background:#c7a36b}
+.water-art{background:#dcece5;border-inline-start:1px solid #b6d1c7;padding:27px 22px 18px}
+.water-art>img{max-height:330px;width:100%;filter:none}
+.water-art figcaption{display:flex;align-items:center;justify-content:center;gap:13px;color:#275862;font-size:12px;letter-spacing:0;line-height:1.6}
+.water-art figcaption span{height:1px;width:20px;background:#b78748}
+.service-entry{background:var(--line);border:1px solid var(--line);border-radius:3px;gap:1px;margin-top:22px}
+.beneficiary-entry,.employee-entry{background:#fffefa;border:0;padding:27px 30px}
+.beneficiary-entry{border-top:4px solid #0b617d}.employee-entry{border-top:4px solid #bb8e4f}
+.entry-number{border:0;border-radius:0;width:auto;height:auto;color:var(--blue);font-size:14px;line-height:1.2;padding-top:4px}
+.employee-entry .entry-number{border:0;color:#916530}
+.entry-details h2{font-size:23px}.entry-details p{font-size:13px;color:var(--muted)}.employee-entry p{color:var(--muted)}
+.entry-details .section-label,.employee-entry .section-label{font-size:12px;color:var(--muted)}
+.entry-symbol{display:none}.entry-actions{gap:18px}
+.employee-entry-link{color:#744823;font-size:13px;border-bottom-color:#b89365}
+.service-note{border-top:1px solid var(--line);margin-top:22px}.service-note p{font-size:12px}.pilot-label{font-size:11px}
+.note-emblem{background:transparent;color:var(--blue);border:1px solid var(--line);border-radius:3px}
+.auth-layout{border-radius:3px;box-shadow:none}
+
+/* Field ledger: the report number and state carry more weight than decoration. */
+.register-filters{border-top:3px solid #a8c9bd;padding:18px 22px;margin-bottom:18px}
+.register-search{max-width:700px;margin-bottom:8px}.register-search label{margin-bottom:5px}
+.register-filter-details>summary{font-size:13px;min-height:44px;display:flex;align-items:center}
+.filter-actions{margin-top:10px}.filter-actions>span{font-size:12px}
+.register-summary{background:#e8f1ec;padding:13px 21px}
+.register-row{padding:16px 21px;grid-template-columns:152px minmax(0,1fr) 140px 44px;gap:15px}
+.register-row:nth-child(even){background:#fafcf9}
+.register-number time,.register-state small,.register-subject p,.register-footnote{font-size:12px}
+.register-subject h3{font-size:16px;line-height:1.5}.register-subject p{margin-top:4px}
+.status-pill{font-size:12px;border-radius:2px}
+.record-open{border-radius:2px;background:#e2efe9}
+.register-empty{padding:36px}.register-empty p{font-size:13px}
+.register-section,.register-filters{background:#fffefa}
+.receipt-reference{font-size:15px}
+.detail-panel{padding:23px}.detail-fields dt{font-size:12px}.detail-fields dd{font-size:14px}
+.detail-gallery a,.detail-gallery img{border-radius:2px}
+.receipt-status{background:#eaf3ed;border-color:#a9cebc;border-top:3px solid var(--green)}
+.receipt-status p,.receipt-status time,.detail-status-note{font-size:12px}
+
+/* Beneficiary intake uses ruled sections; device and server states stay distinct. */
+.intake-panel .panel-heading,.compose-panel .panel-heading{background:#e7f1eb}
+.intake-panel legend{font-size:16px;gap:14px}
+.intake-panel legend>span{background:transparent;color:#9a6e36;border-inline-start:2px solid #b58d53;border-radius:0;width:32px;height:31px;font-size:12px}
+.intake-panel fieldset{border-bottom-color:#bfd3c9}
+.intake-guide{background:#e7f0e8;border-radius:3px;border-bottom:3px solid #bd9b67}
+.intake-guide h2{color:var(--ink)}.intake-guide>p,.guide-line{color:#315951;font-size:13px}
+.photo-picker{background:#f3f8f3;border-color:#6e9c91;border-radius:3px}
+.preview-photo button{min-height:44px;font-size:12px}
+.location-control>span,.intake-submit p,.photo-picker>span{font-size:12px}
+.complaint-queue .panel-heading,.queue-panel .panel-heading{background:#edf4ee}
+.complaint-queue .quiet-button{font-size:12px;min-height:44px}
+.complaint-item,.draft-item{border-radius:2px}.complaint-item small,.draft-item small,.complaint-item time,.draft-item time{font-size:12px}
+
+/* An operations rail for employees, not another public dashboard. */
+.work-rail{background:#123c4b;border-color:#123c4b;color:#e5f0ec}
+.rail-brand{color:#fff;padding:21px 18px 22px;font-size:17px;border-bottom:1px solid #547682}
+.rail-brand small{color:#c8d9d6;font-size:11px}.rail-brand .institution-logo{width:44px;height:39px}
+.work-rail>.rail-caption{color:#bbd4ce;margin-top:18px;font-size:11px}
+.rail-nav a{color:#d3e6e0;font-size:13px;min-height:48px;border-radius:2px}
+.rail-nav a:hover{background:#285668;color:#fff}
+.rail-nav a[aria-current=page],.rail-nav a[aria-current=page]:hover{background:#e3c17e;color:#193b41;box-shadow:none}
+.rail-note{margin: auto 17px 5px;padding:17px 8px;background:transparent;border:0;border-top:1px solid #547682;border-radius:0}
+.rail-note .rail-caption{color:#e3c17e;font-size:11px}.rail-note p{color:#d1e4df;font-size:12px;margin:6px 0}.rail-edition{color:#bad2cc;font-size:11px}
+.rail-profile{border-top-color:#547682}.rail-profile strong{font-size:12px}.rail-profile small{font-size:11px;color:#c1d7d0}
+.rail-profile .icon-button{color:#fff;min-width:44px;min-height:44px}
+.employee-layout .site-header{display:none}
+.employee-layout .connection-bar{background:#edf3ee}
+.work-directory{display:block;border-top:1px solid var(--line)}
+.directory-row{border:0;border-bottom:1px solid var(--line);border-radius:0;background:transparent;padding:19px 12px;gap:18px}
+.directory-row.available:hover{background:#e8f2ed;box-shadow:none;border-color:var(--line)}
+.directory-row h2{font-size:17px;margin-bottom:4px}.directory-row p{font-size:13px}
+.directory-icon,.directory-row:nth-child(n) .directory-icon{background:transparent;color:var(--blue);border:1px solid var(--line);border-radius:2px}
+.availability{font-size:12px;border-radius:2px;background:#e0eee7}.upcoming .availability{background:#e9eeec}
+.account-register table{font-size:13px}.account-register th,.account-register td{padding-block:12px}
+.username,.account-register .role-label{font-size:12px}
+.role-label,.avatar{border-radius:2px}
+
+@media(max-width:960px){
+  .welcome-copy{padding-inline:32px}.welcome-copy h1{font-size:35px}
+  .employee-layout .site-header{display:none}
+  .work-rail{border-bottom:0}.rail-brand{padding:10px 18px}
+  .rail-nav{padding-block:8px}.rail-nav a{min-height:44px}
+  .rail-profile{border:0}.rail-profile .icon-button{color:#fff}
+}
+@media(max-width:720px){
+  .institution-strip{font-size:10px}.container{padding-top:19px}
+  .top-nav{font-size:13px;gap:10px}.top-nav>a,.top-nav .link-button{min-height:44px;padding-inline:4px}
+  .connection-bar{font-size:12px}.connection-indicator{min-height:27px}
+  .public-home .container{padding-top:14px}.water-welcome{grid-template-columns:minmax(0,1fr);min-height:0}
+  .welcome-copy{padding:20px 23px 14px}
+  .welcome-copy h1{font-size:32px;line-height:1.5;margin:9px 0}
+  .welcome-copy p{font-size:13px;line-height:1.85;margin-bottom:12px}
+  .welcome-label{font-size:11px}.welcome-signature{display:none}
+  .welcome-actions{gap:12px}.welcome-actions .button{min-height:45px;font-size:13px}
+  .welcome-actions .text-action{font-size:12px;min-height:44px}
+  .water-art{padding:6px 15px 13px;border:0;border-top:1px solid #b6d1c7}
+  .water-art>img{max-height:130px}.water-art figcaption{font-size:11px;gap:9px}
+  .service-entry{margin-top:13px}.beneficiary-entry,.employee-entry{padding:20px}
+  .service-note{margin-top:15px}.service-note p{font-size:12px}
+  .page-heading h1{font-size:25px}.page-heading p{font-size:13px}
+  .register-filters{padding:15px}.register-row{padding:15px}
+  .register-number time,.register-state small,.register-subject p{font-size:12px}
+  .register-subject h3{font-size:15px}.register-footnote{font-size:12px}
+  .detail-panel{padding:18px}.detail-gallery{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .detail-gallery img{height:110px}
+  .rail-nav{padding:6px 10px 13px}.rail-nav a{font-size:12px}
+  .site-footer,.employee-layout .site-footer{font-size:11px}
+  .panel-heading h2{font-size:16px}
+  .directory-row h2{font-size:16px}.directory-row p{font-size:12px}
+}
+@media(max-width:390px){
+  .brand small{display:block}.top-nav{gap:8px}.header-account{padding-inline:7px!important}
+  .filter-grid{grid-template-columns:1fr}
+  .register-summary .document-tag{display:flex}
+  .site-footer,.employee-layout .site-footer{flex-wrap:wrap}
+}
+.workflow-events{margin:1rem 0 0;padding:0 1.4rem 0 0;list-style:none;border-right:2px solid #c8a46a}
+.workflow-events li{position:relative;padding:.15rem 1rem 1rem 0;border-bottom:1px solid #dbe6e2}
+.workflow-events li::before{content:"";position:absolute;right:-1.77rem;top:.55rem;width:.65rem;height:.65rem;border-radius:50%;background:#0b617d;border:2px solid #fffefa}
+.workflow-events strong,.workflow-events span,.workflow-events time{display:block}
+.workflow-events span,.workflow-events time{color:#49636c;font-size:.86rem}
+.workflow-events p{white-space:pre-wrap;margin:.4rem 0 0}
+.workflow-form{display:grid;gap:.6rem}.workflow-form select,.workflow-form textarea{width:100%;min-height:44px;padding:.65rem;border:1px solid #9fb8b9;background:#fffefa;color:#123c4b;font:inherit}.document-body{padding-block:18px;overflow-wrap:anywhere;line-height:2}
+.workflow-actions{display:grid;gap:.5rem;margin-top:.6rem}.workflow-actions button{min-height:44px;cursor:pointer}
+.violation-form{display:grid;gap:.9rem}.violation-form label{display:block;margin-bottom:.3rem;font-weight:700}.violation-form input,.violation-form select,.violation-form textarea{width:100%;min-width:0;min-height:44px;padding:.65rem;border:1px solid #9fb8b9;background:#fffefa;color:#123c4b;font:inherit}.violation-form .filter-grid>div{min-width:0}
+.report-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem}.report-values{margin:1rem 0 0}.report-values div{display:flex;justify-content:space-between;gap:1rem;padding:.7rem 0;border-bottom:1px solid #dbe6e2}.report-values dd{margin:0;font-weight:700;color:#0b617d}@media(max-width:720px){.report-grid{grid-template-columns:minmax(0,1fr)}}
+.workflow-form input:not([type=checkbox]){width:100%;min-height:44px;padding:.65rem;border:1px solid #9fb8b9;background:#fffefa;color:#123c4b;font:inherit}.settlement-check{display:flex;gap:.6rem;align-items:center;min-height:44px}.settlement-check input{width:22px;height:22px;flex-shrink:0}
+
+.template-catalog{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:18px;margin:22px 0}.template-card h2{font-size:21px;margin-block:12px}.template-card h2 a{color:inherit;text-decoration:none}.template-editor-layout{display:grid;grid-template-columns:minmax(0,2fr) minmax(240px,1fr);gap:22px}.template-field-palette{align-self:start;position:sticky;top:20px}.template-token{display:inline-block;background:#edf6f3;color:#165b67;border:1px solid #9fbfba;border-radius:4px;padding:8px 12px;margin:4px 0 4px 6px;font:inherit;font-size:12px;cursor:pointer;min-height:44px}.template-token:hover,.template-token:focus-visible{background:#d8ede8;border-color:#226c77}.template-editor-layout textarea{resize:vertical;line-height:1.8}.template-editor-layout small{line-height:1.8}.template-editor-layout .errorlist{color:#a64232}.template-card .back-link{display:block;margin-top:14px}.template-editor-layout .workflow-actions{flex-wrap:wrap}.pagination{display:flex;gap:12px;align-items:center;justify-content:center;flex-wrap:wrap;margin:24px 0}@media(max-width:800px){.template-editor-layout{grid-template-columns:1fr}.template-field-palette{position:static;order:-1}.template-field-palette h2{font-size:18px}.template-token{font-size:11px;padding:7px}.template-editor-layout .workflow-actions button{width:100%}}
+.committee-banner{display:flex;gap:18px;align-items:center;justify-content:space-between;flex-wrap:wrap;background:#fff2cb;color:#57461b;padding:10px 24px;font-size:12px}.committee-banner a{font-weight:700;color:#5b4717;text-underline-offset:3px}
+.committee-role-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(250px,1fr)); gap: 18px; margin: 22px 0; }
+.committee-role-grid .detail-panel { display: flex; flex-direction: column; margin: 0; }
+.committee-role-grid form { margin-top: auto; padding-top: 12px; }
+.committee-role-grid button { width: 100%; }
+@media(max-width: 400px) { .committee-role-grid { grid-template-columns: 1fr; } }
